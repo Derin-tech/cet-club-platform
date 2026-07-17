@@ -1,9 +1,21 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/');
+    } catch (error) {
+      console.error('Failed to log out', error);
+    }
+  };
 
   return (
     <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 shadow-sm">
@@ -32,12 +44,26 @@ export default function Navbar() {
               Announcements
             </Link>
             
-            {/* TODO: Firebase login button goes here */}
-            {/* 
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-700 transition-colors shadow-sm">
-              Sign In
-            </button> 
-            */}
+            {user ? (
+              <div className="flex items-center space-x-4">
+                <span className="text-sm text-gray-700 truncate max-w-[150px]" title={user.email}>
+                  {user.email}
+                </span>
+                <button 
+                  onClick={handleLogout}
+                  className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors shadow-sm"
+                >
+                  Log Out
+                </button>
+              </div>
+            ) : (
+              <Link 
+                to="/login"
+                className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-700 transition-colors shadow-sm"
+              >
+                Sign In
+              </Link>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -83,14 +109,32 @@ export default function Navbar() {
               Announcements
             </Link>
             
-            {/* TODO: Firebase login button goes here */}
-            {/*
-            <div className="mt-4 px-4">
-              <button className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg text-base font-medium hover:bg-blue-700 transition-colors shadow-sm">
-                Sign In
-              </button>
+            <div className="mt-4 px-4 border-t border-gray-100 pt-4">
+              {user ? (
+                <div className="space-y-3">
+                  <div className="text-sm font-medium text-gray-700 px-2 truncate">
+                    {user.email}
+                  </div>
+                  <button 
+                    onClick={() => {
+                      handleLogout();
+                      setIsOpen(false);
+                    }}
+                    className="w-full bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-base font-medium hover:bg-gray-200 transition-colors shadow-sm"
+                  >
+                    Log Out
+                  </button>
+                </div>
+              ) : (
+                <Link 
+                  to="/login"
+                  onClick={() => setIsOpen(false)}
+                  className="block text-center w-full bg-blue-600 text-white px-4 py-2 rounded-lg text-base font-medium hover:bg-blue-700 transition-colors shadow-sm"
+                >
+                  Sign In
+                </Link>
+              )}
             </div>
-            */}
           </div>
         </div>
       )}
