@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Mail, Phone, Users, User, X, ExternalLink, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 export default function ClubCard({ club }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -14,7 +15,11 @@ export default function ClubCard({ club }) {
   return (
     <>
       {/* Card */}
-      <div className="bg-white rounded-lg border border-border-light shadow-card hover:shadow-hover transition-all duration-300 flex flex-col overflow-hidden group">
+      <motion.div 
+        whileHover={{ y: -5, scale: 1.02 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        className="bg-white/70 dark:bg-navy-secondary/70 backdrop-blur-md rounded-lg border border-border-light dark:border-border-light/20 shadow-card hover:shadow-floating hover:border-accent/50 dark:hover:border-accent/50 transition-colors duration-300 flex flex-col overflow-hidden group"
+      >
         {/* Card Header Image Placeholder */}
         <div className="h-32 bg-gradient-to-br from-navy-primary/5 to-bg-soft relative w-full overflow-hidden flex items-center justify-center">
           {club.photo ? (
@@ -46,7 +51,7 @@ export default function ClubCard({ club }) {
             <ExternalLink className="w-4 h-4 text-navy-primary/70 group-hover/btn:text-navy-primary transition-colors" />
           </button>
         </div>
-      </div>
+      </motion.div>
 
       {/* Modal */}
       {isModalOpen && (

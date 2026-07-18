@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X, LogIn } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { motion } from 'framer-motion';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,14 +19,17 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-border-light shadow-card">
+    <motion.nav 
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      className="bg-white/60 dark:bg-navy-secondary/60 backdrop-blur-xl sticky top-0 z-50 border-b border-border-light shadow-card transition-colors duration-300"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center gap-2">
-              <div className="w-8 h-8 bg-navy-primary rounded-sm flex items-center justify-center text-white font-bold">
-                C
-              </div>
+              <img src="/logo.jpg" alt="CET Logo" className="w-8 h-8 rounded-sm object-cover" />
               <span className="font-bold text-xl text-navy-secondary tracking-tight">
                 CET Club Platform
               </span>
@@ -40,7 +44,7 @@ export default function Navbar() {
             <a href="/#clubs" className="text-text-muted hover:text-navy-primary px-3 py-2 text-sm font-medium transition-colors">
               Clubs
             </a>
-            <Link to="/announcements" className="text-text-muted hover:text-navy-primary px-3 py-2 text-sm font-medium transition-colors">
+            <Link to="/announcements" className="text-text-muted hover:text-accent px-3 py-2 text-sm font-medium transition-colors">
               Announcements
             </Link>
             
@@ -96,7 +100,11 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="sm:hidden border-t border-border-light bg-white">
+        <motion.div 
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          className="sm:hidden border-t border-border-light bg-white/90 dark:bg-navy-secondary/90 backdrop-blur-xl"
+        >
           <div className="pt-2 pb-4 space-y-1">
             <Link
               to="/"
@@ -165,8 +173,8 @@ export default function Navbar() {
               )}
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
-    </nav>
+    </motion.nav>
   );
 }

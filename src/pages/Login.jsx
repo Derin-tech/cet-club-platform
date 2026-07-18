@@ -64,25 +64,23 @@ export default function Login() {
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-white">
       {/* Left Panel - Brand Moment */}
-      <div className="relative md:w-1/2 bg-navy-secondary flex flex-col justify-center items-center p-12 overflow-hidden min-h-[400px]">
+      <div 
+        className="relative md:w-1/2 flex flex-col justify-center items-center p-12 overflow-hidden min-h-[400px] bg-cover bg-center"
+        style={{ backgroundImage: "url('/login-bg.jpg')" }}
+      >
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-navy-secondary/85"></div>
+        
         {/* Background Decorative Elements */}
         <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-navy-primary rounded-pill mix-blend-multiply filter blur-3xl opacity-50"></div>
         <div className="absolute top-[20%] right-[-10%] w-72 h-72 bg-navy-primary rounded-pill mix-blend-multiply filter blur-3xl opacity-30"></div>
         <div className="absolute bottom-[-20%] left-[20%] w-80 h-80 bg-navy-primary rounded-pill mix-blend-multiply filter blur-3xl opacity-50"></div>
         
-        {/* Abstract SVG Pattern */}
-        <svg className="absolute inset-0 w-full h-full opacity-20 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" strokeDasharray="4 4" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
+
 
         <div className="relative z-10 text-center max-w-md mx-auto">
-          <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-lg flex items-center justify-center mb-8 mx-auto border border-white/20 shadow-floating">
-            <span className="text-3xl font-bold text-white">C</span>
+          <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-lg flex items-center justify-center mb-8 mx-auto border border-white/20 shadow-floating overflow-hidden">
+            <img src="/logo.jpg" alt="CET Logo" className="w-full h-full object-cover" />
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
             CET Club Platform
