@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { motion } from 'framer-motion';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -62,9 +63,12 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-white">
+    <div className="min-h-screen flex flex-col md:flex-row bg-transparent">
       {/* Left Panel - Brand Moment */}
-      <div 
+      <motion.div 
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
         className="relative md:w-1/2 flex flex-col justify-center items-center p-12 overflow-hidden min-h-[400px] bg-cover bg-center"
         style={{ backgroundImage: "url('/login-bg.jpg')" }}
       >
@@ -89,10 +93,15 @@ export default function Login() {
             One platform for every club at CET. Discover, join, and manage your campus communities all in one place.
           </p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Right Panel - Login Form */}
-      <div className="md:w-1/2 flex flex-col justify-center py-12 px-6 sm:px-12 lg:px-24 bg-white flex-1">
+      <motion.div 
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="md:w-1/2 flex flex-col justify-center py-12 px-6 sm:px-12 lg:px-24 bg-white/70 backdrop-blur-xl flex-1 border-l border-border-light shadow-[-10px_0_30px_rgba(0,0,0,0.05)]"
+      >
         <div className="w-full max-w-md mx-auto">
           <h2 className="text-3xl font-extrabold text-text-dark mb-2">Welcome back</h2>
           <p className="text-text-muted mb-8 font-medium">Please enter your details to sign in.</p>
@@ -197,7 +206,7 @@ export default function Login() {
             </p>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

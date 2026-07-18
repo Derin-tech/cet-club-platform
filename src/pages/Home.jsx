@@ -23,12 +23,7 @@ export default function Home() {
   const announcementsThisMonth = allAnnouncements.filter(a => new Date(a.date).getMonth() === currentMonth).length;
 
   return (
-    <div className="min-h-screen flex flex-col font-sans relative bg-white">
-      {/* Fixed low-opacity background image */}
-      <div 
-        className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-15 pointer-events-none"
-        style={{ backgroundImage: "url('/home-bg.jpg')" }}
-      ></div>
+    <div className="flex flex-col font-sans relative bg-transparent">
       
       <div className="relative z-10 flex flex-col min-h-screen">
         <AnnouncementBanner />

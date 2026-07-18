@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Mail, Phone, Users, User, X, ImageIcon } from 'lucide-react';
 import { clubs } from '../data/clubs';
+import { motion } from 'framer-motion';
 
 export default function ClubDetail() {
   const { id } = useParams();
@@ -11,7 +12,7 @@ export default function ClubDetail() {
 
   if (!club) {
     return (
-      <div className="min-h-screen bg-bg-soft flex flex-col items-center justify-center p-4">
+      <div className="min-h-screen bg-transparent flex flex-col items-center justify-center p-4">
         <h1 className="text-3xl font-bold text-navy-secondary mb-4">Club Not Found</h1>
         <p className="text-text-muted mb-8">The club you're looking for doesn't exist or has been removed.</p>
         <Link to="/" className="px-6 py-3 bg-navy-primary text-white font-medium rounded-md hover:bg-navy-secondary transition-colors">
@@ -27,9 +28,9 @@ export default function ClubDetail() {
   );
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-transparent">
       {/* Navbar Minimal Setup for Detail Page */}
-      <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-40 border-b border-border-light shadow-card">
+      <nav className="bg-white/70 backdrop-blur-md sticky top-0 z-40 border-b border-border-light shadow-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center">
             <button 
@@ -45,7 +46,12 @@ export default function ClubDetail() {
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-12 pb-8 border-b border-border-light">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-12 pb-8 border-b border-border-light bg-white/50 backdrop-blur-sm p-6 sm:p-8 rounded-xl shadow-card"
+        >
           <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-lg bg-navy-primary/10 flex items-center justify-center text-navy-primary font-bold text-4xl sm:text-5xl shrink-0 shadow-card">
             {club.photo ? (
               <img src={club.photo} alt={club.name} className="w-full h-full object-cover rounded-lg" />
@@ -57,18 +63,18 @@ export default function ClubDetail() {
             <h1 className="text-4xl sm:text-5xl font-extrabold text-navy-secondary mb-2">{club.name}</h1>
             <p className="text-navy-primary font-semibold text-lg">CET Club Platform</p>
           </div>
-        </div>
+        </motion.div>
 
         <div className="space-y-16">
           {/* About */}
           <section>
             <h2 className="text-sm font-bold text-text-muted/70 uppercase tracking-wider mb-4">About the Club</h2>
-            <p className="text-text-muted text-lg leading-relaxed whitespace-pre-line">{club.description}</p>
+            <p className="text-text-muted text-lg leading-relaxed whitespace-pre-line bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-border-light shadow-card">{club.description}</p>
           </section>
 
           {/* Leadership & Contact */}
           <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-bg-soft p-6 rounded-lg border border-border-light shadow-card hover:shadow-hover transition-shadow">
+            <div className="bg-white/70 backdrop-blur-md p-6 rounded-lg border border-border-light shadow-card hover:shadow-floating transition-all">
               <h3 className="text-sm font-bold text-text-muted/70 uppercase tracking-wider mb-5">Leadership</h3>
               <div className="space-y-5">
                 <div className="flex items-center gap-4">
@@ -92,7 +98,7 @@ export default function ClubDetail() {
               </div>
             </div>
 
-            <div className="bg-bg-soft p-6 rounded-lg border border-border-light shadow-card hover:shadow-hover transition-shadow">
+            <div className="bg-white/70 backdrop-blur-md p-6 rounded-lg border border-border-light shadow-card hover:shadow-floating transition-all flex flex-col justify-between">
               <h3 className="text-sm font-bold text-text-muted/70 uppercase tracking-wider mb-5">Contact Info</h3>
               <div className="space-y-5">
                 <a href={`mailto:${club.contact.email}`} className="flex items-center gap-4 hover:text-navy-primary transition-colors group">
