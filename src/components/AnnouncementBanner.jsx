@@ -22,16 +22,16 @@ export default function AnnouncementBanner() {
   const announcement = recentAnnouncements[0];
 
   return (
-    <div className="bg-amber-100 text-amber-900 px-4 py-3 relative sm:flex sm:items-center sm:justify-between">
+    <div className="bg-accent/10 text-navy-secondary px-4 py-3 relative sm:flex sm:items-center sm:justify-between border-b border-accent/20">
       <div className="flex items-center gap-3 pr-8">
-        <Megaphone className="h-5 w-5 text-amber-600 shrink-0" />
+        <Megaphone className="h-5 w-5 text-accent shrink-0" />
         <p className="text-sm font-medium">
           <span className="font-bold">{announcement.clubName}:</span> {announcement.title} - {announcement.content}
         </p>
       </div>
       <button 
         onClick={() => setIsVisible(false)}
-        className="absolute top-1/2 -translate-y-1/2 right-4 sm:static sm:translate-y-0 p-1 hover:bg-amber-200 rounded-full transition-colors"
+        className="absolute top-1/2 -translate-y-1/2 right-4 sm:static sm:translate-y-0 p-1 hover:bg-accent/20 rounded-pill transition-colors text-navy-secondary/60 hover:text-navy-secondary"
         aria-label="Dismiss"
       >
         <X className="h-4 w-4" />

@@ -9,44 +9,49 @@ export default function Hero({ totalClubs = 0, totalAdvisors = 0, announcementsT
   };
 
   return (
-    <div className="relative bg-white overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-blue-50 opacity-50 blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-amber-50 opacity-50 blur-3xl"></div>
+    <div className="relative bg-bg-soft overflow-hidden min-h-[80vh] flex flex-col justify-center">
+      {/* Background decoration: Soft Gradient Mesh */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-pill bg-navy-primary/10 mix-blend-multiply filter blur-3xl opacity-70"></div>
+        <div className="absolute top-[20%] right-[-10%] w-[400px] h-[400px] rounded-pill bg-accent/20 mix-blend-multiply filter blur-3xl opacity-70"></div>
+        <div className="absolute bottom-[-20%] left-[20%] w-[600px] h-[600px] rounded-pill bg-navy-primary/5 mix-blend-multiply filter blur-3xl opacity-70"></div>
       </div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 relative z-10">
-        <div className="text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-blue-100 bg-blue-50 text-blue-700 font-medium text-sm mb-8">
-            <span className="flex h-2 w-2 rounded-full bg-blue-600 mr-2"></span>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10 w-full">
+        <div className="text-center max-w-4xl mx-auto flex flex-col items-center">
+          <div className="inline-flex items-center px-4 py-1.5 rounded-pill border border-navy-primary/20 bg-navy-primary/5 backdrop-blur-sm text-navy-primary font-medium text-sm mb-8 shadow-card">
+            <span className="flex h-2 w-2 rounded-pill bg-navy-primary mr-2"></span>
             College of Engineering Trivandrum
           </div>
           
-          <h1 className="text-5xl md:text-6xl font-extrabold text-blue-950 tracking-tight leading-tight mb-6">
-            Discover every club at <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
-              CET in one place
+          <h1 className="text-6xl md:text-7xl font-extrabold text-navy-secondary tracking-tight leading-tight mb-6">
+            Every Club. <br className="hidden sm:block" />
+            <span className="text-accent">
+              One Platform.
             </span>
           </h1>
           
-          <p className="mt-4 text-xl text-gray-600 mb-10 leading-relaxed">
-            From technology and coding to arts and recreation, explore all the vibrant student communities shaping life at CET. Find your passion, connect with peers, and start building.
+          <p className="mt-4 text-xl md:text-2xl text-text-muted mb-10 leading-relaxed max-w-2xl font-medium">
+            Discover, explore, and stay updated with every student club at CET — all in one place.
           </p>
           
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center mb-10 w-full sm:w-auto">
             <button
               onClick={scrollToClubs}
-              className="group flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-200 transition-all active:scale-95"
+              className="group flex justify-center items-center gap-3 bg-navy-primary text-white px-10 py-5 rounded-md text-lg font-semibold hover:bg-navy-secondary hover:shadow-hover hover:scale-105 transition-all duration-300 active:scale-95 w-full sm:w-auto"
             >
-              Explore Clubs
-              <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+              Browse Clubs
+              <ArrowDown className="w-6 h-6 group-hover:translate-y-1 transition-transform" />
             </button>
           </div>
           
           {totalClubs > 0 && (
-            <div className="text-sm text-slate-500 font-normal mt-4">
-              {totalClubs} Clubs &middot; {totalAdvisors} Faculty Advisors &middot; {announcementsThisMonth} Update{announcementsThisMonth !== 1 ? 's' : ''} This Month
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-sm text-text-muted font-medium mt-4 bg-white/50 backdrop-blur-sm py-3 px-6 rounded-pill border border-border-light shadow-card">
+              <span>{totalClubs} Clubs</span>
+              <span className="hidden sm:block w-1 h-1 rounded-pill bg-border-light"></span>
+              <span>{totalAdvisors} Faculty Advisors</span>
+              <span className="hidden sm:block w-1 h-1 rounded-pill bg-border-light"></span>
+              <span>{announcementsThisMonth} Update{announcementsThisMonth !== 1 ? 's' : ''} This Month</span>
             </div>
           )}
         </div>

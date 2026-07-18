@@ -11,10 +11,10 @@ export default function ClubDetail() {
 
   if (!club) {
     return (
-      <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
-        <h1 className="text-3xl font-bold text-blue-950 mb-4">Club Not Found</h1>
-        <p className="text-gray-600 mb-8">The club you're looking for doesn't exist or has been removed.</p>
-        <Link to="/" className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
+      <div className="min-h-screen bg-bg-soft flex flex-col items-center justify-center p-4">
+        <h1 className="text-3xl font-bold text-navy-secondary mb-4">Club Not Found</h1>
+        <p className="text-text-muted mb-8">The club you're looking for doesn't exist or has been removed.</p>
+        <Link to="/" className="px-6 py-3 bg-navy-primary text-white font-medium rounded-md hover:bg-navy-secondary transition-colors">
           Return Home
         </Link>
       </div>
@@ -29,12 +29,12 @@ export default function ClubDetail() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navbar Minimal Setup for Detail Page */}
-      <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-40 border-b border-gray-100 shadow-sm">
+      <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-40 border-b border-border-light shadow-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center">
             <button 
               onClick={() => navigate('/')} 
-              className="flex items-center gap-2 text-gray-600 hover:text-blue-600 font-medium transition-colors"
+              className="flex items-center gap-2 text-text-muted hover:text-navy-primary font-medium transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
               Back to Home
@@ -45,67 +45,67 @@ export default function ClubDetail() {
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-12 pb-8 border-b border-gray-100">
-          <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-4xl sm:text-5xl shrink-0 shadow-sm">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-12 pb-8 border-b border-border-light">
+          <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-lg bg-navy-primary/10 flex items-center justify-center text-navy-primary font-bold text-4xl sm:text-5xl shrink-0 shadow-card">
             {club.photo ? (
-              <img src={club.photo} alt={club.name} className="w-full h-full object-cover rounded-2xl" />
+              <img src={club.photo} alt={club.name} className="w-full h-full object-cover rounded-lg" />
             ) : (
               club.name.substring(0, 1)
             )}
           </div>
           <div>
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-blue-950 mb-2">{club.name}</h1>
-            <p className="text-blue-600 font-semibold text-lg">CET Club Platform</p>
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-navy-secondary mb-2">{club.name}</h1>
+            <p className="text-navy-primary font-semibold text-lg">CET Club Platform</p>
           </div>
         </div>
 
         <div className="space-y-16">
           {/* About */}
           <section>
-            <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">About the Club</h2>
-            <p className="text-gray-700 text-lg leading-relaxed whitespace-pre-line">{club.description}</p>
+            <h2 className="text-sm font-bold text-text-muted/70 uppercase tracking-wider mb-4">About the Club</h2>
+            <p className="text-text-muted text-lg leading-relaxed whitespace-pre-line">{club.description}</p>
           </section>
 
           {/* Leadership & Contact */}
           <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-              <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-5">Leadership</h3>
+            <div className="bg-bg-soft p-6 rounded-lg border border-border-light shadow-card hover:shadow-hover transition-shadow">
+              <h3 className="text-sm font-bold text-text-muted/70 uppercase tracking-wider mb-5">Leadership</h3>
               <div className="space-y-5">
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                  <div className="w-10 h-10 rounded-pill bg-navy-primary/10 flex items-center justify-center text-navy-primary">
                     <User className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900 text-lg">{club.lead}</p>
-                    <p className="text-gray-500 text-sm">Student Lead</p>
+                    <p className="font-semibold text-text-dark text-lg">{club.lead}</p>
+                    <p className="text-text-muted text-sm">Student Lead</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                  <div className="w-10 h-10 rounded-pill bg-navy-primary/10 flex items-center justify-center text-navy-primary">
                     <Users className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900 text-lg">{club.facultyAdvisor}</p>
-                    <p className="text-gray-500 text-sm">Faculty Advisor</p>
+                    <p className="font-semibold text-text-dark text-lg">{club.facultyAdvisor}</p>
+                    <p className="text-text-muted text-sm">Faculty Advisor</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-              <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-5">Contact Info</h3>
+            <div className="bg-bg-soft p-6 rounded-lg border border-border-light shadow-card hover:shadow-hover transition-shadow">
+              <h3 className="text-sm font-bold text-text-muted/70 uppercase tracking-wider mb-5">Contact Info</h3>
               <div className="space-y-5">
-                <a href={`mailto:${club.contact.email}`} className="flex items-center gap-4 hover:text-blue-600 transition-colors group">
-                  <div className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 group-hover:bg-blue-50 group-hover:text-blue-600 group-hover:border-blue-200 transition-all shadow-sm">
+                <a href={`mailto:${club.contact.email}`} className="flex items-center gap-4 hover:text-navy-primary transition-colors group">
+                  <div className="w-10 h-10 rounded-pill bg-white border border-border-light flex items-center justify-center text-text-muted group-hover:bg-navy-primary/10 group-hover:text-navy-primary group-hover:border-navy-primary/20 transition-all shadow-card">
                     <Mail className="w-5 h-5" />
                   </div>
-                  <span className="text-gray-800 font-medium group-hover:text-blue-700">{club.contact.email}</span>
+                  <span className="text-text-dark font-medium group-hover:text-navy-primary">{club.contact.email}</span>
                 </a>
-                <a href={`tel:${club.contact.phone}`} className="flex items-center gap-4 hover:text-blue-600 transition-colors group">
-                  <div className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 group-hover:bg-blue-50 group-hover:text-blue-600 group-hover:border-blue-200 transition-all shadow-sm">
+                <a href={`tel:${club.contact.phone}`} className="flex items-center gap-4 hover:text-navy-primary transition-colors group">
+                  <div className="w-10 h-10 rounded-pill bg-white border border-border-light flex items-center justify-center text-text-muted group-hover:bg-navy-primary/10 group-hover:text-navy-primary group-hover:border-navy-primary/20 transition-all shadow-card">
                     <Phone className="w-5 h-5" />
                   </div>
-                  <span className="text-gray-800 font-medium group-hover:text-blue-700">{club.contact.phone}</span>
+                  <span className="text-text-dark font-medium group-hover:text-navy-primary">{club.contact.phone}</span>
                 </a>
               </div>
             </div>
@@ -113,14 +113,14 @@ export default function ClubDetail() {
 
           {/* Photo Gallery */}
           <section>
-            <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-6">Gallery</h2>
+            <h2 className="text-sm font-bold text-text-muted/70 uppercase tracking-wider mb-6">Gallery</h2>
             
             {club.photos && club.photos.length > 0 ? (
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {club.photos.map((photoUrl, idx) => (
                   <div 
                     key={idx} 
-                    className="aspect-square bg-gray-100 rounded-xl overflow-hidden cursor-pointer group relative shadow-sm"
+                    className="aspect-square bg-border-light rounded-md overflow-hidden cursor-pointer group relative shadow-card"
                     onClick={() => setLightboxImage(photoUrl)}
                   >
                     <img 
@@ -133,12 +133,12 @@ export default function ClubDetail() {
                 ))}
               </div>
             ) : (
-              <div className="bg-gray-50 rounded-2xl border border-gray-100 border-dashed p-12 flex flex-col items-center justify-center text-center">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-gray-300 mb-4 shadow-sm">
+              <div className="bg-bg-soft rounded-lg border border-border-light border-dashed p-12 flex flex-col items-center justify-center text-center">
+                <div className="w-16 h-16 bg-white rounded-pill flex items-center justify-center text-text-muted/50 mb-4 shadow-card">
                   <ImageIcon className="w-8 h-8" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-1">No photos yet</h3>
-                <p className="text-gray-500">Check back later for event highlights and memories!</p>
+                <h3 className="text-lg font-semibold text-text-dark mb-1">No photos yet</h3>
+                <p className="text-text-muted">Check back later for event highlights and memories!</p>
               </div>
             )}
           </section>
@@ -146,8 +146,8 @@ export default function ClubDetail() {
           {/* Announcements */}
           <section>
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider">All Announcements</h2>
-              <span className="bg-blue-100 text-blue-700 font-bold text-xs px-2.5 py-1 rounded-full">
+              <h2 className="text-sm font-bold text-text-muted/70 uppercase tracking-wider">All Announcements</h2>
+              <span className="bg-navy-primary/10 text-navy-primary font-bold text-xs px-2.5 py-1 rounded-pill">
                 {sortedAnnouncements.length} Update{sortedAnnouncements.length !== 1 ? 's' : ''}
               </span>
             </div>
@@ -155,10 +155,10 @@ export default function ClubDetail() {
             {sortedAnnouncements.length > 0 ? (
               <div className="space-y-4">
                 {sortedAnnouncements.map((announcement, idx) => (
-                  <div key={idx} className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-amber-200 transition-all">
+                  <div key={idx} className="bg-white border border-border-light rounded-lg p-6 shadow-card hover:shadow-hover hover:border-accent/40 transition-all">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-                      <h3 className="text-xl font-bold text-blue-950">{announcement.title}</h3>
-                      <span className="inline-block bg-amber-50 text-amber-700 font-medium text-xs px-3 py-1 rounded-full self-start sm:self-auto border border-amber-100">
+                      <h3 className="text-xl font-bold text-navy-secondary">{announcement.title}</h3>
+                      <span className="inline-block bg-accent/10 text-accent font-medium text-xs px-3 py-1 rounded-pill self-start sm:self-auto border border-accent/20">
                         {new Date(announcement.date).toLocaleDateString(undefined, {
                           year: 'numeric',
                           month: 'long',
@@ -166,12 +166,12 @@ export default function ClubDetail() {
                         })}
                       </span>
                     </div>
-                    <p className="text-gray-600 leading-relaxed">{announcement.content}</p>
+                    <p className="text-text-muted leading-relaxed">{announcement.content}</p>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-gray-500 italic">No announcements to show at this time.</p>
+              <p className="text-text-muted italic">No announcements to show at this time.</p>
             )}
           </section>
         </div>
@@ -179,10 +179,10 @@ export default function ClubDetail() {
 
       {/* Lightbox Modal */}
       {lightboxImage && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-gray-900/90 backdrop-blur-md animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-navy-secondary/90 backdrop-blur-md animate-in fade-in duration-200">
           <button 
             onClick={() => setLightboxImage(null)}
-            className="absolute top-6 right-6 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
+            className="absolute top-6 right-6 p-2 bg-white/10 hover:bg-white/20 rounded-pill text-white transition-colors"
           >
             <X className="w-6 h-6" />
           </button>
@@ -190,7 +190,7 @@ export default function ClubDetail() {
           <img 
             src={lightboxImage} 
             alt="Enlarged gallery view" 
-            className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
+            className="max-w-full max-h-[85vh] object-contain rounded-md shadow-floating"
           />
         </div>
       )}
